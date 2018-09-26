@@ -72,7 +72,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+//        return 1;
+        $signature = Yii::$app->request->get("signature");
+        $timestamp = Yii::$app->request->get("timestamp");
+        $nonce = Yii::$app->request->get("nonce");
+        $echostr = Yii::$app->request->get("echostr	");
+        $tmpArr = array($timestamp, $nonce);
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+//var_dump( Yii::$app->request->get("echostr	"));die;
+        if( $signature == $tmpStr ){
+//            return 'ture';
+            return $echostr;
+        }else{
+            return 'false';
+        }
+//        return $this->render('index');
     }
 
     /**

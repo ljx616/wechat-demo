@@ -23,7 +23,7 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'advanced-api',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -37,19 +37,14 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
-            'showScriptName' => false,
-            'rules' => [
-                ['class' => 'yii\rest\UrlRule',
-                    'controller' => 'WechatUser',
-                    'extraPatterns'=>[
-                        'GET send-email'=>'send-email'
+        /*
+                'urlManager' => [
+                    'enablePrettyUrl' => true,
+                    'showScriptName' => false,
+                    'rules' => [
                     ],
                 ],
-            ],
-        ],
+                */
         'response' => [
             'class' => 'yii\web\Response',
             'on beforeSend' => function ($event) {
